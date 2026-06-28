@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@layer components {
+  .card {
+    @apply bg-gray-300 w-[175px] h-60 md:w-60 md:h-75 shadow rounded-md;
+  }
+}
 
 @theme {
   --color-primary: #0f172a;

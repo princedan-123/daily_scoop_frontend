@@ -1,6 +1,7 @@
 import { Menu } from "lucide-react";
 import { House } from "lucide-react";
 import { Search } from "lucide-react";
+import { Outlet } from "react-router-dom";
 
 export default function RootLayer() {
   return (
@@ -19,7 +20,9 @@ export default function RootLayer() {
         </label>
         <select id="country"></select>
       </form>
-      <main className="flex-grow"></main>
+      <section className="flex-grow">
+        <Outlet />
+      </section>
       <footer className="flex justify-around items-center">
         <div className="flex flex-col items-center cursor-pointer">
           <House />
