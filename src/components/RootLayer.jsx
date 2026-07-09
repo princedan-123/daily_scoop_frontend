@@ -8,7 +8,13 @@ export default function RootLayer() {
     <div className="flex flex-col min-h-screen bg-white font-roboto">
       <div className="flex justify-between pt-16 pb-2">
         <div className="mx-4 text-primary text-xl font-extrabold">
-          <h1>Logo</h1>
+          <div>
+            <img
+              src="/news_logo.png"
+              alt="site-logo"
+              className="h-8 md:h-10 lg:h-12"
+            />
+          </div>
         </div>
         <div className="mx-4 cursor-pointer">
           <Menu />
@@ -23,13 +29,13 @@ export default function RootLayer() {
       <section className="flex-grow">
         <Outlet />
       </section>
-      <footer className="flex justify-around items-center">
+      <footer className="shadow-[0_-5px_8px_rgba(0,0,0,0.08)] flex justify-around items-center mt-4 pt-6">
         <div className="flex flex-col items-center cursor-pointer">
-          <House />
+          <House size={19} />
           <p className="text-secondary ">Home</p>
         </div>
         <div className="flex flex-col items-center cursor-pointer">
-          <Search />
+          <Search size={19} />
           <p className="text-secondary">search</p>
         </div>
       </footer>

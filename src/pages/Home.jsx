@@ -3,25 +3,13 @@ import GuardianNews from "../components/GuardianNews";
 export default function Home() {
   return (
     <div>
-      <section className="flex space justify-evenly h-7 cursor-pointer font-bold">
-        <div className="flex items-center rounded shadow bg-gray-100 p-4">
-          Sports
-        </div>
-        <div className="flex items-center rounded shadow bg-gray-100 p-4">
-          Health
-        </div>
-        <div className="flex items-center rounded shadow bg-gray-100 p-4">
-          Science
-        </div>
-        <div className="flex items-center rounded shadow bg-gray-100 p-4">
-          Business
-        </div>
-        <div className="flex items-center rounded shadow bg-gray-100 p-4">
-          Politics
-        </div>
-        <div className="flex items-center rounded shadow bg-gray-100 p-4">
-          Entertainment
-        </div>
+      <section className="font-roboto flex space justify-evenly h-7 cursor-pointer font-bold">
+        <div className="category-button">Sports</div>
+        <div className="category-button">Health</div>
+        <div className="category-button">Science</div>
+        <div className="category-button">Business</div>
+        <div className="category-button">Politics</div>
+        <div className="category-button">Entertainment</div>
       </section>
       <NewsFeed />
       <GuardianNews />

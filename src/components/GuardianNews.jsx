@@ -25,7 +25,7 @@ export default function GuardianNews() {
     });
     return (
       <>
-        <div className="flex items-center gap-3 px-4 py-4">
+        <div className="flex items-center gap-3 px-4 py-4 font-roboto">
           <div className="h-8 w-1 rounded-full bg-[#E60012]"></div>
           <h1 className="text-2xl font-bold">Guardian News</h1>
         </div>
