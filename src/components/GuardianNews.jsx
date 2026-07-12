@@ -15,11 +15,34 @@ export default function GuardianNews() {
   }
   if (data) {
     const feed = data.map((article) => {
+      let category = null;
+      if (Array.isArray(article.category)) {
+        category = article.category.join(" ");
+      }
       return (
-        <div key={article.id} className="card cursor-pointer">
-          <img src="/guardian_image_placeholder.png" className="h-1/2 w-full" />
-          <p className="p-4 w-full h-28 overflow-hidden">{article.title}</p>
-          <h3 className="category">{article.category.join(" ")}</h3>
+        <div key={article.id} className="card  cursor-pointer">
+          <img
+            src="/guardian_image_placeholder.png"
+            className="h-1/2 w-full object-cover"
+          />
+          <p className=" bg-[#052962] text-white py-1.5 px-4 w-full h-20 overflow-hidden">
+            {article.title}
+          </p>
+          {category ? (
+            <h3 className="category">{category}</h3>
+          ) : (
+            <h3 className="category">Generic</h3>
+          )}
+          <h3>
+            <a
+              href={article?.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="full-article"
+            >
+              Read full article on Guardian ↗
+            </a>
+          </h3>
         </div>
       );
     });
