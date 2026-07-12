@@ -1,14 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import fetchNewsFeed from "../api/fetchNewsFeed";
 import NewsFeedSkeleton from "./Skeletons";
 import NotFoundError from "./NotFoundError";
 import ConnectionError from "./ConnectionError";
 import GenericError from "./GenericError";
+import newsByCategory from "../api/fetchNewsByCategory";
+import { useParams } from "react-router-dom";
 
-export default function NewsFeed() {
+export default function NewsCategory() {
+  const { news_category } = useParams();
+  console.log(news_category);
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["newsFeed"],
-    queryFn: fetchNewsFeed,
+    queryKey: ["newCategory", news_category],
+    queryFn: () => newsByCategory(news_category),
   });
   if (isLoading) {
     return <NewsFeedSkeleton />;
@@ -30,7 +33,7 @@ export default function NewsFeed() {
         <div key={article.id} className="card cursor-pointer">
           <img
             src={cover_poster}
-            className="h-1/2 w-full object-cover"
+            className="h-1/2 w-full"
             onError={(e) => {
               e.target.src = "/broken_image.png";
             }}
@@ -58,9 +61,9 @@ export default function NewsFeed() {
     });
     return (
       <>
-        <div className="flex items-center gap-3 px-4 py-4" font-roboto>
+        <div className="flex items-center gap-3 px-4 py-4 font-roboto">
           <div className="h-8 w-1 rounded-full bg-[#E60012]"></div>
-          <h1 className="text-2xl font-bold">Feed</h1>
+          <h1 className="text-2xl font-bold">{news_category} News</h1>
         </div>
         <section className="grid grid-cols-1 gap-4 md:gap-4 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 px-4">
           {feed}
@@ -71,16 +74,16 @@ export default function NewsFeed() {
   if (isError) {
     switch (true) {
       case error.status === 0:
-        return <ConnectionError section="News Feed" message={error.message} />;
+        return <ConnectionError section="category" message={error.message} />;
         break;
       case error.status === 404:
-        return <NotFoundError section="News Feed" />;
+        return <NotFoundError section="category" />;
         break;
       case error.status >= 500:
-        return <SeverError section="News Feed" />;
+        return <SeverError section="category" />;
         break;
       default:
-        return <GenericError section="News Feed" message={error.message} />;
+        return <GenericError section="category" message={error.message} />;
         break;
     }
   }
