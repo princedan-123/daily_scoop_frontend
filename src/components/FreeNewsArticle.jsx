@@ -6,9 +6,17 @@ import fetchFreeNewsArticle from "../api/fetch_free_news_article";
 import { useParams } from "react-router-dom";
 import ArticleSkeleton from "./FreeNewsSkeleton";
 import NewsSummary from "./NewsSummary";
+import { useState } from "react";
+import formatArticle from "../utilities/formatArticle";
+import Authors from "./MetaData";
+import MetaData from "./MetaData";
 
 export default function FreeNewsArticle() {
   const { articleId } = useParams();
+  const [isFormatted, SetFormatted] = useState(false);
+  function handleFormatArticle() {
+    SetFormatted((prev) => !prev);
+  }
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["freeNewsArticle", articleId],
     queryFn: () => {
@@ -20,6 +28,19 @@ export default function FreeNewsArticle() {
   }
   if (data) {
     const newsSummary = data?.data?.incipit;
+    let formattedBody;
+    if (isFormatted) {
+      formattedBody = formatArticle(data?.data?.body).map(
+        (paragraph, index) => {
+          return (
+            <div key={index} className="px-6 py-3">
+              <p>{paragraph}</p>
+            </div>
+          );
+        },
+      );
+    }
+    let unformattedBody = data?.data?.body;
     return (
       <section className="min-h-screen bg-gray-50">
         <div className="aspect-video px-4 mx-auto relative">
@@ -35,9 +56,22 @@ export default function FreeNewsArticle() {
           ) : null}
         </div>
         {newsSummary ? <NewsSummary summary={newsSummary} /> : null}
-        <p className="px-6 md:p-8 text-base md:text-lg leading-8 space-y-6">
-          {data?.data?.body}
-        </p>
+        <div>
+          <div>
+            <button
+              className="px-4 py-2 mt-8 bg-white ml-4 rounded shadow-lg"
+              onClick={handleFormatArticle}
+            >
+              Format Article
+            </button>
+          </div>
+          <MetaData article={data?.data} />
+          {isFormatted ? (
+            formattedBody
+          ) : (
+            <p className="leading-8 space-y-2 py-8 px-4">{unformattedBody}</p>
+          )}
+        </div>
       </section>
     );
   }
