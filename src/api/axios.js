@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: " http://127.0.0.1:8000",
+  baseURL: " https://daily-scoop-398f1dc0.fastapicloud.dev/",
   timeout: 60000,
 });
 

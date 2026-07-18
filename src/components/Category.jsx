@@ -5,10 +5,10 @@ import ConnectionError from "./ConnectionError";
 import GenericError from "./GenericError";
 import newsByCategory from "../api/fetchNewsByCategory";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function NewsCategory() {
   const { news_category } = useParams();
-  console.log(news_category);
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["newCategory", news_category],
     queryFn: () => newsByCategory(news_category),
@@ -25,9 +25,62 @@ export default function NewsCategory() {
       }
       if (article?.source === "free_news") {
         cover_poster = "/free_news_image_cover.png";
+        return (
+          <Link
+            to={`/free_news_article/${article.id}`}
+            key={article.id}
+            className="card cursor-pointer"
+          >
+            <img
+              src={cover_poster}
+              alt={article?.title}
+              className="h-1/2 w-full object-cover"
+              onError={(e) => {
+                e.target.src = "/broken_image.png";
+              }}
+            />
+            <p className=" bg-[#052962] text-white py-1.5 px-4 w-full h-20 overflow-hidden">
+              {article.title}
+            </p>
+            {category ? (
+              <h3 className="category">{category}</h3>
+            ) : (
+              <h3 className="category">Generic</h3>
+            )}
+          </Link>
+        );
       }
-      if (article?.source === "current_news" && article?.image) {
-        cover_poster = article?.image;
+      if (article?.source === "current_news") {
+        cover_poster = article?.image || null;
+        return (
+          <a
+            key={article.id}
+            href={article?.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card cursor-pointer"
+          >
+            <img
+              src={cover_poster}
+              alt={article?.title}
+              className="h-1/2 w-full object-cover"
+              onError={(e) => {
+                e.target.src = "/broken_image.png";
+              }}
+            />
+            <p className=" bg-[#052962] text-white py-1.5 px-4 w-full h-20 overflow-hidden">
+              {article.title}
+            </p>
+            {category ? (
+              <h3 className="category">{category}</h3>
+            ) : (
+              <h3 className="category">Generic</h3>
+            )}
+            {article?.source === "current_news" ? (
+              <span className="full-article">Read full article ↗</span>
+            ) : null}
+          </a>
+        );
       }
       return (
         <div key={article.id} className="card cursor-pointer">

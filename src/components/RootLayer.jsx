@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import HomeMenu from "./HomeMenu";
 import { House } from "lucide-react";
 import { Search } from "lucide-react";
 import { Outlet } from "react-router-dom";
@@ -19,7 +19,7 @@ export default function RootLayer() {
           </Link>
         </div>
         <div className="mx-4 cursor-pointer">
-          <Menu />
+          <HomeMenu />
         </div>
       </div>
       <form className="flex justify-end mx-4 my-1">

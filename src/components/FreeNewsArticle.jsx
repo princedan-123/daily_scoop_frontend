@@ -8,7 +8,6 @@ import ArticleSkeleton from "./FreeNewsSkeleton";
 import NewsSummary from "./NewsSummary";
 import { useState } from "react";
 import formatArticle from "../utilities/formatArticle";
-import Authors from "./MetaData";
 import MetaData from "./MetaData";
 
 export default function FreeNewsArticle() {
@@ -27,6 +26,7 @@ export default function FreeNewsArticle() {
     return <ArticleSkeleton />;
   }
   if (data) {
+    console.log(`thumbnail : ${data?.data?.thumbnail}`);
     const newsSummary = data?.data?.incipit;
     let formattedBody;
     if (isFormatted) {
@@ -45,12 +45,12 @@ export default function FreeNewsArticle() {
       <section className="min-h-screen bg-gray-50">
         <div className="aspect-video px-4 mx-auto relative">
           <img
-            src={data.data.thumbnail}
+            src={data?.data?.thumbnail}
             alt="article_image_cover"
             className="object-cover w-full rounded"
           />
           {data?.data?.topics ? (
-            <div className="px-4 bg-white shadow-md h-9 rounded-md inline-flex items-center  font-bold absolute left-6 bottom-4">
+            <div className="px-4 bg-white shadow-md h-9 rounded-md inline-flex items-center  font-bold absolute left-6 bottom-8 ">
               {data?.data?.topics.join(" ")}
             </div>
           ) : null}
