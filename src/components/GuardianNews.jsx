@@ -52,7 +52,7 @@ export default function GuardianNews() {
           <div className="h-8 w-1 rounded-full bg-[#E60012]"></div>
           <h1 className="text-2xl font-bold">Guardian News</h1>
         </div>
-        <section className="grid grid-cols-1 gap-4 md:gap-4 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 px-4">
+        <section className="grid grid-cols-1 gap-4 md:gap-4 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 p-2">
           {feed}
         </section>
       </>
