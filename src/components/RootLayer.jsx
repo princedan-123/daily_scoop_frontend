@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 export default function RootLayer() {
   return (
-    <div className="flex flex-col min-h-screen bg-white font-roboto w-screen overflow-hidden">
+    <div className="flex flex-col min-h-screen bg-white font-roboto overflow-hidden">
       <div className="flex justify-between pt-16 pb-2">
-        <div className="mx-4 text-primary text-xl font-extrabold">
+        <div className="px-4 text-primary text-xl font-extrabold">
           <Link to="/">
             <img
               src="/news_logo.png"
@@ -18,18 +18,18 @@ export default function RootLayer() {
             />
           </Link>
         </div>
-        <div className="mx-4 cursor-pointer">
+        <div className="px-4 cursor-pointer">
           <HomeMenu />
         </div>
       </div>
-      <form className="flex justify-end mx-4 my-1">
+      <form className="flex justify-end px-4 py-1">
         <label htmlFor="country" className="text-secondary">
           Country
         </label>
         <select id="country"></select>
       </form>
       <section className="flex-grow">
-        <section className="font-roboto flex flex-wrap gap-4 ml-4 mb-4 cursor-pointer font-bold">
+        <section className="font-roboto flex flex-wrap gap-4 px-4 mb-4 cursor-pointer font-bold">
           <NavLink className="category-button" to="category/sports">
             Sports
           </NavLink>
