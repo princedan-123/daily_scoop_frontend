@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @layer components {
   .card {
-    @apply bg-gray-300 w-96  md:w-80  lg:w-96  shadow-md rounded-md overflow-hidden h-96 px-4;
+    @apply bg-gray-300 w-full shadow-md rounded-md overflow-hidden h-96 px-4;
   }
   .category {
     @apply font-bold text-[#E60012] p-4;

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function RootLayer() {
   return (
-    <div className="flex flex-col min-h-screen bg-white font-roboto">
+    <div className="flex flex-col min-h-screen bg-white font-roboto w-screen overflow-hidden">
       <div className="flex justify-between pt-16 pb-2">
         <div className="mx-4 text-primary text-xl font-extrabold">
           <Link to="/">
