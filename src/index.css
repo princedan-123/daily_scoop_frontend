@@ -7,7 +7,7 @@
     @apply font-bold text-[#E60012] p-4;
   }
   .category-button {
-    @apply flex items-center rounded-lg border border-gray-200 text-gray-700  bg-gray-100  py-1.5 px-4 transition-all duration-200 hover:bg-gray-50 hover:border-red-300 hover:-translate-y-0.5 hover:shadow-sm;
+    @apply flex items-center rounded md:rounded-lg border border-gray-200 text-gray-700  bg-gray-100  py-1 md:py-1.5 px-4 transition-all duration-200 hover:bg-gray-50 hover:border-red-300 hover:-translate-y-0.5 hover:shadow-sm text-sm md:text-base font-normal;
   }
   .active {
     @apply bg-[#E60012] text-white;
