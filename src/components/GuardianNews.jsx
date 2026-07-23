@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import fetchGuardianFeed from "../api/fetchGuardian";
 import NewsFeedSkeleton from "./Skeletons";
-import NotFoundError from "./NotFoundError";
-import ConnectionError from "./ConnectionError";
-import GenericError from "./GenericError";
+import NotFoundError from "./error/NotFoundError";
+import ConnectionError from "./error/ConnectionError";
+import GenericError from "./error/GenericError";
 
 export default function GuardianNews() {
   const { data, isLoading, isError, error } = useQuery({

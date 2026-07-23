@@ -7,7 +7,7 @@ import {
 import RootLayer from "./components/RootLayer";
 import Home from "./pages/Home";
 import NewsCategory from "./components/Category";
-import FreeNewsArticle from "./components/FreeNewsArticle";
+import FreeNewsArticle from "./components/free_news_api/FreeNewsArticle";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();

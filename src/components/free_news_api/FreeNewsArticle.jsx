@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import NotFoundError from "./NotFoundError";
-import ConnectionError from "./ConnectionError";
-import GenericError from "./GenericError";
-import fetchFreeNewsArticle from "../api/fetch_free_news_article";
+import NotFoundError from "../error/NotFoundError";
+import ConnectionError from "../error/ConnectionError";
+import GenericError from "../error/GenericError";
+import fetchFreeNewsArticle from "../../api/fetch_free_news_article";
 import { useParams } from "react-router-dom";
 import ArticleSkeleton from "./FreeNewsSkeleton";
-import NewsSummary from "./NewsSummary";
+import NewsSummary from "../NewsSummary";
 import { useState } from "react";
-import formatArticle from "../utilities/formatArticle";
-import MetaData from "./MetaData";
+import formatArticle from "../../utilities/formatArticle";
+import MetaData from "../MetaData";
 
 export default function FreeNewsArticle() {
   const { articleId } = useParams();
