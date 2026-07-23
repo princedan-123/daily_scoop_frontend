@@ -11,17 +11,19 @@ export default function HomeMenu() {
   } else {
     return (
       <div className="relative">
-        <X
-          size={20}
-          className="absolute top-3 right-2 cursor-pointer bg-white rounded-full shadow"
-          onClick={handleMenu}
-        />
-        <div className="flex flex-col items-center shadow-lg rounded bg-white w-44 h-30 py-4">
-          <div className="p-2 border-b-1 w-full flex flex-col items-center border-gray-300">
-            Login
-          </div>
-          <div className="p-2 border-b-1 w-full flex flex-col items-center border-gray-300">
-            Signup
+        <div className="z-40 absolute right-0 top-8  w-44 rounded bg-white shadow-lg">
+          <X
+            size={20}
+            className="absolute top-3 right-2 cursor-pointer bg-white rounded-full shadow"
+            onClick={handleMenu}
+          />
+          <div className="flex flex-col items-center shadow-lg rounded bg-white w-44 h-30 py-4">
+            <div className="p-2 border-b-1 w-full flex flex-col items-center border-gray-300">
+              Login
+            </div>
+            <div className="p-2 border-b-1 w-full flex flex-col items-center border-gray-300">
+              Signup
+            </div>
           </div>
         </div>
       </div>
