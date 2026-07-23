@@ -20,7 +20,13 @@ export default function GuardianNews() {
         category = article.category.join(" ");
       }
       return (
-        <div key={article.id} className="card  cursor-pointer">
+        <a
+          key={article.id}
+          className="card  cursor-pointer"
+          href={article?.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
             src="/guardian_image_placeholder.png"
             className="h-1/2 w-full object-cover"
@@ -34,16 +40,11 @@ export default function GuardianNews() {
             <h3 className="category">Generic</h3>
           )}
           <h3>
-            <a
-              href={article?.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="full-article"
-            >
+            <span className="full-article">
               Read full article on Guardian ↗
-            </a>
+            </span>
           </h3>
-        </div>
+        </a>
       );
     });
     return (
